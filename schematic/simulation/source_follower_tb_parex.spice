@@ -1,0 +1,44 @@
+** sch_path: /home/abrka/projects/sky130_analog_template/schematic/source_follower_tb_parex.sch
+**.subckt source_follower_tb_parex
+x1 VDD vin_tb vout_tb net1 GND source_follower
+V1 VDD GND 1.8
+VIN vin_tb GND DC 0.9 AC 1
+XM1 GND net1 net1 net3 sky130_fd_pr__nfet_01v8 L=0.15 W=1 nf=1 ad='int((nf+1)/2) * W/nf * 0.29' as='int((nf+2)/2) * W/nf * 0.29' pd='2*int((nf+1)/2) * (W/nf + 0.29)'
++ ps='2*int((nf+2)/2) * (W/nf + 0.29)' nrd='0.29 / W' nrs='0.29 / W' sa=0 sb=0 sd=0 mult=1 m=1
+I0 VDD net1 10u
+XM2 GND net2 net2 net4 sky130_fd_pr__nfet_01v8 L=0.15 W=1 nf=1 ad='int((nf+1)/2) * W/nf * 0.29' as='int((nf+2)/2) * W/nf * 0.29' pd='2*int((nf+1)/2) * (W/nf + 0.29)'
++ ps='2*int((nf+2)/2) * (W/nf + 0.29)' nrd='0.29 / W' nrs='0.29 / W' sa=0 sb=0 sd=0 mult=1 m=1
+I1 VDD net2 10u
+x2 VDD vin_tb vout_tb_parex net2 GND source_follower_parex
+**** begin user architecture code
+
+** opencircuitdesign pdks install
+.lib /home/abrka/.volare/sky130A/libs.tech/ngspice/sky130.lib.spice tt
+
+
+
+
+.include ../../layout/source_follower_parex.spice
+
+
+**** end user architecture code
+**.ends
+
+* expanding   symbol:  source_follower.sym # of pins=5
+** sym_path: /home/abrka/projects/sky130_analog_template/schematic/source_follower.sym
+** sch_path: /home/abrka/projects/sky130_analog_template/schematic/source_follower.sch
+.subckt source_follower VDD vin vout vbias GND
+*.ipin GND
+*.ipin vin
+*.ipin vbias
+*.ipin VDD
+*.opin vout
+XM1 VDD vin vout GND sky130_fd_pr__nfet_01v8 L=0.15 W=10 nf=1 ad='int((nf+1)/2) * W/nf * 0.29' as='int((nf+2)/2) * W/nf * 0.29' pd='2*int((nf+1)/2) * (W/nf + 0.29)'
++ ps='2*int((nf+2)/2) * (W/nf + 0.29)' nrd='0.29 / W' nrs='0.29 / W' sa=0 sb=0 sd=0 mult=1 m=1
+XM2 vout vbias GND GND sky130_fd_pr__nfet_01v8 L=0.15 W=1 nf=1 ad='int((nf+1)/2) * W/nf * 0.29' as='int((nf+2)/2) * W/nf * 0.29' pd='2*int((nf+1)/2) * (W/nf + 0.29)'
++ ps='2*int((nf+2)/2) * (W/nf + 0.29)' nrd='0.29 / W' nrs='0.29 / W' sa=0 sb=0 sd=0 mult=1 m=1
+.ends
+
+.GLOBAL VDD
+.GLOBAL GND
+.end

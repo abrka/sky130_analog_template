@@ -1,0 +1,8 @@
+| units: 500000 tech: sky130A format: MIT
+x vbias GND vout GND s=31000,710 d=35000,750 l=30 w=200 x=-10 y=-417 sky130_fd_pr__nfet_01v8
+x vin vout VDD GND s=309232,4324 d=349392,4364 l=30 w=2008 x=-8 y=3 sky130_fd_pr__nfet_01v8
+R vbias 545
+R vout 2172
+R vin 3449
+R VDD 1643
+R GND 419

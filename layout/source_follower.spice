@@ -1,0 +1,7 @@
+* NGSPICE file created from source_follower.ext - technology: sky130A
+
+.subckt source_follower VDD vin vout vbias GND
+X0 vout vbias GND GND sky130_fd_pr__nfet_01v8 ad=0.875 pd=3.75 as=0.775 ps=3.55 w=1 l=0.15
+X1 VDD vin vout GND sky130_fd_pr__nfet_01v8 ad=8.7348 pd=21.82 as=7.7308 ps=21.62 w=10.04 l=0.15
+.ends
+

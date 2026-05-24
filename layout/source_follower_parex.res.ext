@@ -1,0 +1,28 @@
+scale 1000 1 500000
+rnode "VDD.t0" 0 0 995 33 0
+rnode "VDD" 0 0 -166 109 0
+resist "VDD" "VDD.t0" 13.6915
+rnode "vin.t0" 0 0 995 18 0
+rnode "vin" 0 0 -168 13 0
+resist "vin" "vin.t0" 1864.99
+rnode "vout.t0" 0 0 89 -388 0
+rnode "vout.t1" 0 0 995 3 0
+rnode "vout.n0" 0 0 1003 -73 0
+rnode "vout" 0 0 2077 -179 0
+resist "vout.n0" "vout.t1" 11.3937
+resist "vout" "vout.n0" 104.127
+resist "vout.n0" "vout.t0" 315.201
+rnode "GND.t1" 0 0 89 -418 0
+rnode "GND.t2" 0 0 995 18 0
+rnode "GND.t0" 0 0 89 -403 0
+rnode "GND.n0" 0 0 105 -499 0
+rnode "GND" 0 0 -167 -498 0
+resist "GND" "GND.n0" 9.7716
+resist "GND.n0" "GND.t1" 233.6
+resist "GND.t0" "GND.t2" 823.655
+resist "GND.n0" "GND.t0" 1650.47
+rnode "vbias.t0" 0 0 89 -403 0
+rnode "vbias" 0 0 -168 -408 0
+resist "vbias" "vbias.t0" 410.96
+device msubckt sky130_fd_pr__nfet_01v8 -9 3 -8 4  "GND.t2" "vin.t0" 60 0 "vout.t1" 2008 309232,4324 "VDD.t0" 2008 349392,4364
+device msubckt sky130_fd_pr__nfet_01v8 -11 -418 -10 -417  "GND.t0" "vbias.t0" 60 0 "GND.t1" 200 31000,710 "vout.t0" 200 35000,750

@@ -1,0 +1,27 @@
+* NGSPICE file created from source_follower_parex.ext - technology: sky130A
+
+.subckt source_follower_parex VDD vin vout vbias GND
+X0 vout.t0 vbias.t0 GND.t1 GND.t0 sky130_fd_pr__nfet_01v8 ad=0.875 pd=3.75 as=0.775 ps=3.55 w=1 l=0.15
+X1 VDD.t0 vin.t0 vout.t1 GND.t2 sky130_fd_pr__nfet_01v8 ad=8.7348 pd=21.82 as=7.7308 ps=21.62 w=10.04 l=0.15
+R0 vbias vbias.t0 410.961
+R1 GND.n0 GND.t0 1650.47
+R2 GND.t0 GND.t2 823.655
+R3 GND.n0 GND.t1 233.601
+R4 GND GND.n0 9.7721
+R5 vout.n0 vout.t0 315.202
+R6 vout vout.n0 104.127
+R7 vout.n0 vout.t1 11.3942
+R8 vin vin.t0 1864.99
+R9 VDD VDD.t0 13.692
+C0 VDD vbias 7.95e-19
+C1 VDD vout 0.728985f
+C2 vin VDD 0.196212f
+C3 vout vbias 0.013239f
+C4 vin vbias 0.029011f
+C5 vin vout 0.093774f
+C6 vbias GND 0.372545f
+C7 vout GND 0.856378f
+C8 vin GND 0.274784f
+C9 VDD GND 1.06367f
+.ends
+
