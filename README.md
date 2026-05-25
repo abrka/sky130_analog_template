@@ -11,6 +11,47 @@
 - Create the symbol for the core circuit
 - Create the testbench using the symbol normally
 
+## Mixed Signal Co-simulation
+
+### Verilog
+- Make sure you have ``` `timescale``` set
+- There must be an `initial` block which and it must end after some time, just like a testbench
+
+### Symbol Creation
+- Create a symbol like normal
+- Press q and set the property to this
+
+```
+type=primitive
+format="@name [ @@i_in0 @@i_in1 @@i_in2 ] [ @@o_out0  @@o_out1  @@o_out2 ] @model"
+template="name=A1 model=name_of_your_model"
+device_model=".model name_of_your_model d_cosim simulation=\"ivlng\" sim_args=[\"name_of_your_model\"]"
+```
+
+### Analog to Digital and Digital To Analog signal
+- If you are connecting any analog signal to digital then create an `adc_bridge` and set its property to this 
+```
+name=A1 adc_bridge_model= comparator
+device_model=".model comparator adc_bridge in_low=0.3 in_high=1.5"
+```
+- If you are connecting any analog signal to digital then create an `dac_bridge` and set its property to this 
+```
+name=A10 dac_bridge_model= dac_buff
+device_model=".model dac_buff dac_bridge input_load=1e-15 t_rise=10n t_fall=10n out_low=0 out_high=1.8"
+```
+
+### Intermediate code generation
+- Create a `launcher` to convert verilog code and set its property to this
+```
+name=h1
+descr="Build Icarus Verilog Object"
+tclcommand="execute 1 sh -c \"cd $netlist_dir; iverilog -o your_design_name [abs_sym_path path/to/your/verilog/from/simulation/directory]\"" 
+```
+- Press the `launcher` before simulating
+
+### Simulation
+- Simulate normally
+
 ## Layout
 - Create the layout normally
 
